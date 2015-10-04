@@ -11,11 +11,11 @@ Building Docker Image
 Running Boris
 -------------------
 
-    docker run -it wartron/alpine-php-boris
+    docker run --rm -it wartron/alpine-php-boris
 
 
 
 TODO
 -------------------
 
-* Need to fix use of  Ctrl-C to exit. *NOTE* you must use `exit()` to exit boris.
+* Need to fix use of  Ctrl-C / CTRL-Z to exit. *NOTE* you must use `exit()` to exit boris.
