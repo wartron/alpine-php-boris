@@ -13,6 +13,7 @@ RUN apk add --update \
   php-json \
   php-mcrypt \
   php-memcache \
+  php-openssl \
   php-phar \
   php-xml \
   php-zip \
@@ -21,9 +22,13 @@ RUN apk add --update \
   php-posix && \
   rm -rf /var/cache/apk/*
 
-RUN wget https://github.com/borisrepl/boris/archive/master.zip && \
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+
+RUN wget https://github.com/alexpw/boris/archive/master.zip && \
     unzip master.zip && \
     rm master.zip && \
-    mv boris-master/ /boris/
+    mv boris-master/ /boris/ && \
+    cd /boris && \
+    composer install --prefer-dist
 
 CMD ["php","/boris/bin/boris"]
